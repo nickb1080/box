@@ -3,97 +3,135 @@
   <head>
     <title>CSS Cube</title>
     
-    <link rel="stylesheet" href="cube5.css" type="text/css" media="screen" title="Cube5" charset="utf-8" />
-    <style type="text/css" media="screen">            
-      
-      /* Only used for this demo */
+    <link rel="stylesheet" href="bootstrap.css">
+    <style type="text/css" media="screen">  
+
+      /* 
+      *   all this is for the demo.
+      *   CSS necessary for 3d effect is inserted automatically
+      */
+
+      *, *:before, *:after {
+        box-sizing: border-box;
+      }
+
       body {
-        padding: 0 50px;
-        font-family: "Georgia", Verdana;
+        background: #eee;
+      }
+
+      .box-container {
+        margin: 0 auto;
+      }
+
+      .box {
+        -webkit-transition: -webkit-transform .4s;
+      }
+
+      .face.left, .face.right {
+        background: #888
       }
       
-      #demo-cube {
-        margin: auto;
-      }
-      
-      #demo-cuboid {
-        margin: auto;
-        height: 430px;
-      }
-      
-      #demo-cube .face {
-        background-color: rgba(0,0,0,0.05);
-        -webkit-backface-visibility: visible;
-      }
-            
-      #demo-cube .face, #demo-cuboid .face {
-        vertical-align: middle;
+      .face {
+        background: white;
+        border: 1px solid #888;
         text-align: center;
-        font-family: "Lucida Grande";
-        font-size: 13px;
-        text-shadow: 0 1px 0 #fff;
+      }
+
+
+      .wrapper {
+        width: 600px;
+        margin: 2rem auto;
+        text-align: center;
+      }
+
+      .subtitle {
+        display: block;
+        font-size: .5em;
       }
       
-      #demo-settings .face {        
-        background-color: rgba(0,0,0,0.1);
-      }
     </style>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js" type="text/javascript" charset="utf-8"></script>    
-    <script type="text/javascript" charset="utf-8">      
-      window.onload = function(){
-        var buttons = document.getElementById('cube-buttons').getElementsByTagName('button');
-        for (var i = 0, l = buttons.length; i < l; i++){
-          buttons[i].onclick = function(){
-            document.getElementById('demo-cube').getElementsByTagName('div')[0].className = 'cube to' + this.innerHTML;
-          };
-        }
-        
-        var buttons = document.getElementById('cuboid-buttons').getElementsByTagName('button');
-        for (var i = 0, l = buttons.length; i < l; i++){
-          buttons[i].onclick = function(){
-            document.getElementById('demo-cuboid').getElementsByTagName('div')[0].className = 'cube to' + this.innerHTML;
-          };
-        }
-      };      
-    </script>
   </head>
   <body>
-    <h1>Cube5</h1>
-    <h2>by <a href="http://devthought.com">Guillermo Rauch</a></h2>
-        
-    <hr />  
+    
+    <div class="wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <h1>Box.coffee
+            <span class="subtitle"><em>A CoffeeScript class for 3d boxes.</em></small>
+          </h1>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-4">
+            <input class="form-control form-control-lg" id="axisInput" type="text" placeholder="Axis (x, y, or z)..."></input>
+          </div>
+          <div class="form-group col-md-4">
+            <input class="form-control form-control-lg" id="degreeInput" type="text" placeholder="Degrees to turn"></input>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-block btn-success" id="rotateButton">Rotate</button>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="box-container" id="demo-box">
       
-    <h2>Cube</h2>
-    <p id="cube-buttons"><button>Top</button> <button>Front</button> <button>Bottom</button> <button>Left</button> <button>Right</button> <button>Rear</button></p>
-    
-    <div class="cube-container" id="demo-cube">
-      <div class="cube toFront">      
-        <div class="face top"><h3>Top</h3></div>
-        <div class="face front"><h3>Front</h3></div>
-        <div class="face bottom"><h3>Bottom</h3></div>
-        <div class="face left"><h3>Left</h3></div>
-        <div class="face right"><h3>Right</h3></div>
-        <div class="face rear"><h3>Rear</h3></div>      
+      <div class="box">
+
+        <div class="face front">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2>Front</h2>
+                <div class="btn-group btn-group-lg"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face bottom"></div>
+        <div class="face top"></div>
+
+        <div class="face rear">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2>Rear</h2>
+                <div class="form-group">
+                  <label>Username</label>
+                  <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                  <label>Email address</label>
+                  <input class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-    
-    <br /><br />
-    <hr />
-    
-    <h2>Cuboid</h2>
-    <p id="cuboid-buttons"><button>Front</button> <button>Left</button> <button>Right</button> <button>Rear</button></p>
-        
-    <div class="cube-container" id="demo-cuboid">
-      <div class="cube toFront">      
-        <div class="face top"><h3>Top</h3></div>
-        <div class="face front"><h3>Front</h3></div>
-        <div class="face bottom"><h3>Bottom</h3></div>
-        <div class="face left"><h3>Left</h3></div>
-        <div class="face right"><h3>Right</h3></div>
-        <div class="face rear"><h3>Rear</h3></div>      
-      </div>
-    </div>
-    
+
+
+    <script src="jquery.js"></script>
+    <script src="box.js"></script>
+    <script>
+      var boxOpts = {        
+        width: 600,
+        height: 300,
+        depth: 40
+      };
+      var box = new Box( ".box-container", boxOpts );
+
+      document.getElementById( "rotateButton" ).addEventListener( "click", function( evt ) {
+        var axis = document.getElementById( "axisInput" ).value;
+        var deg = document.getElementById( "degreeInput" ).value;
+        box.turn( deg, axis );
+      });
+
+    </script>
   </body>
 </html>
