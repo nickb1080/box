@@ -26,10 +26,6 @@
       .box {
         -webkit-transition: -webkit-transform .4s;
       }
-
-      .face.left, .face.right {
-        background: #888
-      }
       
       .face {
         background: white;
@@ -67,7 +63,7 @@
           </div>
           <div class="form-group col-md-4">
             <label>Degrees to turn</label>
-            <input class="form-control form-control-lg" id="degreeInput" type="text" value="15"></input>
+            <input class="form-control form-control-lg" id="degreeInput" type="text" value="45"></input>
           </div>
           <div class="col-md-4">
             <label>Let it rip</label>
@@ -84,16 +80,47 @@
         <div class="face front">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-xs-12">
+              <div class="col-xs-12 form-group">
                 <h2>Front</h2>
-                <div class="btn-group btn-group-lg"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 form-group">
+                <div class="btn-group btn-group-justified">
+                  <a href="#" class="btn btn-default btn-lg">A</a>
+                  <a href="#" class="btn btn-default btn-lg">B</a>
+                  <a href="#" class="btn btn-default btn-lg">C</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 form-group">
+                <button class="btn btn-lg btn-info">Button</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="face left"></div>
-        <div class="face right"></div>
+        <div class="face left">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2>Left</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="face right">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2>Right</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="face bottom"></div>
         <div class="face top"></div>
 
@@ -123,13 +150,13 @@
     <script src="box.js"></script>
     <script>
       var boxOpts = {        
-        width: 600,
+        width: 400,
         height: 300,
-        depth: 40
+        depth: 400
       };
       var box = new Box( ".box-container", boxOpts );
 
-      box.turn( 30, "y" )
+      box.turn( 45 );
 
       document.getElementById( "rotateButton" ).addEventListener( "click", function( evt ) {
         var axis = document.getElementById( "axisInput" ).value;
