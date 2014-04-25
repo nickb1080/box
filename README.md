@@ -1,14 +1,7 @@
-Cube5: A CSS3 animated 3D Cube layout
-=====================================
+# Cubicle
+_Layout HTML as a cube w/ CSS plus programmatic control
 
-Cube5 is a set of CSS classes that allow you to create a 3D layout similar to that seen in certain OS X applications such as Quicksilver. The 3D effect works only on Webkit nightly for now, but the layout is accessible for every browser.
-
-Click [here](http://screenr.com/xmd) for a screencast of the effect.
-
-Demo [here](http://devthought.com/wp-content/projects/cube5/index.html)
-
-How to use
-----------
+Forked from [Cube5](https://github.com/guille/Cube5)
 
 Cube5 is entirely CSS(3) based, including the animations, so it only requires that you include the CSS snippet `cube5.css`.
 The markup should look like this
@@ -23,18 +16,6 @@ The markup should look like this
 	    <div class="face rear"><h3>Rear</h3></div>      
 	  </div>
 	</div>
-
-In order to change the currently shown face, programmatically change the class of the cube from `toFront` to toTop, toBottom, toLeft, toRight or toRear.
-
-In jQuery:
-
-	$('#demo-cube .cube').attr('class', 'cube toRear');
-
-In MooTools
-
-	$$('#demo-cube .cube').set('class', 'cube toRear');
-
-When the class is changed, the cube will transition to the designated face (if -webkit-transform-3d is supported) or simply switch without a transition if the effect is not supported.
 
 Notes
 -----
