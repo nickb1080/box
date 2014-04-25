@@ -16,8 +16,10 @@ class Box
       height : "100%"
       transformStyle : "preserve-3d"
 
-    @box.find ".face"
-      .css "position", "absolute"
+    # outline mitigates jagged 3d rendering in Firefox
+    @box.find( ".face" ).css 
+      position: "absolute"
+      outline: "1px solid transparent"
 
     @faces = do =>
       front : @container.find ".front"
@@ -28,12 +30,12 @@ class Box
       bottom : @container.find ".bottom"
           
     @rotation = 
-      x : 0
-      y : 0
-      z : 0
+      x : opts.rotation?.x or 0
+      y : opts.rotation?.y or 0
+      z : opts.rotation?.z or 0
 
     @setSize()
-    @setCubeTransform()
+    @setBoxTransform()
 
 
   perspective : ( set ) ->
@@ -43,7 +45,7 @@ class Box
       return @container.css "perspective"
 
 
-  setSize : ( opts ) ->
+  setSize : ( opts ) =>
     { @width, @height, @depth } = opts if opts
 
     @container.css
@@ -74,14 +76,14 @@ class Box
     @faces.top.css "transform", "rotateX( 90deg ) translateZ( #{ @height / 2 }px )"
     @faces.bottom.css "transform", "rotateX( -90deg ) translateZ( #{ @height / 2 }px )"
 
-  setCubeTransform : ->
+  setBoxTransform : =>
     @box.css "transform", "translateZ( #{ @depth / -2 }px ) rotateX( #{ @rotation.x }deg ) rotateY( #{ @rotation.y }deg ) rotateZ( #{ @rotation.z }deg )"
 
 
   turn : ( deg = 0, axis = "y" ) =>
     return if axis not in ["x", "y", "z"]
     @rotation[axis] += +deg
-    @setCubeTransform()
+    @setBoxTransform()
 
 
   flip : =>
@@ -111,4 +113,5 @@ class Box
     return ( @rotation.y % 360 is 0 )
 
 
-this.Box = Box
+root = ( if typeof exports isnt "undefined" and exports isnt null then exports else this )
+root.Box = Box
