@@ -1,5 +1,5 @@
-# Cubicle
-_Layout HTML as a cube w/ CSS plus programmatic control
+# Box
+_Layout HTML as a cube w/ CSS plus programmatic control_
 
 Inspired by [Cube5](https://github.com/guille/Cube5)
 
