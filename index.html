@@ -20,7 +20,7 @@
       }
 
       .box-container {
-        margin: 0 auto;
+        margin: 4rem auto;
       }
 
       .box {
@@ -62,12 +62,15 @@
         </div>
         <div class="row">
           <div class="form-group col-md-4">
-            <input class="form-control form-control-lg" id="axisInput" type="text" placeholder="Axis (x, y, or z)..."></input>
+            <label>Rotate on axis</label>
+            <input class="form-control form-control-lg" id="axisInput" type="text" value="y"</input>
           </div>
           <div class="form-group col-md-4">
-            <input class="form-control form-control-lg" id="degreeInput" type="text" placeholder="Degrees to turn"></input>
+            <label>Degrees to turn</label>
+            <input class="form-control form-control-lg" id="degreeInput" type="text" value="15"></input>
           </div>
           <div class="col-md-4">
+            <label>Let it rip</label>
             <button class="btn btn-block btn-success" id="rotateButton">Rotate</button>
           </div>
         </div>
@@ -125,6 +128,8 @@
         depth: 40
       };
       var box = new Box( ".box-container", boxOpts );
+
+      box.turn( 30, "y" )
 
       document.getElementById( "rotateButton" ).addEventListener( "click", function( evt ) {
         var axis = document.getElementById( "axisInput" ).value;
