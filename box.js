@@ -112,22 +112,25 @@
       return this.box.css("transform", "translateZ( " + (this.depth / -2) + "px ) rotateX( " + this.rotation.x + "deg ) rotateY( " + this.rotation.y + "deg ) rotateZ( " + this.rotation.z + "deg )");
     };
 
-    Box.prototype.turn = function(deg, axis) {
-      if (deg == null) {
-        deg = 0;
+    Box.prototype.turn = function(r) {
+      var axis, deg;
+      r || (r = {
+        y: 0
+      });
+      for (axis in r) {
+        deg = r[axis];
+        console.log(axis);
+        if (axis === "x" || axis === "y" || axis === "z") {
+          this.rotation[axis] += +deg;
+        }
       }
-      if (axis == null) {
-        axis = "y";
-      }
-      if (axis !== "x" && axis !== "y" && axis !== "z") {
-        return;
-      }
-      this.rotation[axis] += +deg;
       return this.setBoxTransform();
     };
 
     Box.prototype.flip = function() {
-      return this.turn(180);
+      return this.turn({
+        y: 180
+      });
     };
 
     Box.prototype.showBack = function() {

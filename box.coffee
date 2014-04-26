@@ -80,14 +80,18 @@ class Box
     @box.css "transform", "translateZ( #{ @depth / -2 }px ) rotateX( #{ @rotation.x }deg ) rotateY( #{ @rotation.y }deg ) rotateZ( #{ @rotation.z }deg )"
 
 
-  turn : ( deg = 0, axis = "y" ) =>
-    return if axis not in ["x", "y", "z"]
-    @rotation[axis] += +deg
+  turn : ( r ) =>
+    r or= { y: 0 }
+    for axis, deg of r
+      console.log axis
+      if axis in ["x", "y", "z"]
+        @rotation[axis] += +deg
+
     @setBoxTransform()
 
 
   flip : =>
-    @turn( 180 )
+    @turn( y: 180 )
 
 
   showBack : =>

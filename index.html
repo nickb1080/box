@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>CSS Cube</title>
+    <title>BOX</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <link rel="stylesheet" href="demo-assets/bootstrap.css">
     <style type="text/css" media="screen">  
@@ -100,23 +100,9 @@
         </div>
 
         <div class="face left">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-xs-12">
-                <h2>Left</h2>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="face right">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-xs-12">
-                <h2>Right</h2>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="face bottom"></div>
@@ -143,25 +129,47 @@
       </div>
     </div>
 
+    <div class="wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <p><a href="https://github.com/nickb1080/box">Source on GitHub</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <script src="demo-assets/jquery.js"></script>
     <script src="box.js"></script>
     <script>
-      var boxOpts = {        
-        width: 400,
-        height: 300,
-        depth: 400
-      };
-      var box = new Box( ".box-container", boxOpts );
-      box.turn( 45 );
 
-      $( ".box" ).css( "transition", "all .5s ease-in-out" );
+      // declare this out here so you can play with it in the console.
+      var box;
 
-      document.getElementById( "rotateButton" ).addEventListener( "click", function( evt ) {
-        var axis = document.getElementById( "axisInput" ).value;
-        var deg = document.getElementById( "degreeInput" ).value;
-        box.turn( deg, axis );
-      });
+      (function(){
+
+        var boxOpts = {        
+          width: 400,
+          height: 240,
+          depth: 25
+        };
+
+        box = new Box( ".box-container", boxOpts );
+        box.turn( 45 );
+
+        $( ".box" ).css( "transition", "all .5s ease-in-out" );
+
+        document.getElementById( "rotateButton" ).addEventListener( "click", function( evt ) {
+          var axis = document.getElementById( "axisInput" ).value;
+          var deg = document.getElementById( "degreeInput" ).value;
+          o = {};
+          o[axis] = deg;
+          box.turn( o );
+        });   
+
+      }());
+        
 
     </script>
   </body>
