@@ -22,10 +22,6 @@
       .box-container {
         margin: 4rem auto;
       }
-
-      .box {
-        -webkit-transition: -webkit-transform .4s;
-      }
       
       .face {
         background: white;
@@ -46,7 +42,9 @@
       }
       
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
+
   <body>
     
     <div class="wrapper">
@@ -57,15 +55,15 @@
           </h1>
         </div>
         <div class="row">
-          <div class="form-group col-md-4">
+          <div class="form-group col-sm-4">
             <label>Rotate on axis</label>
             <input class="form-control form-control-lg" id="axisInput" type="text" value="y"</input>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-sm-4">
             <label>Degrees to turn</label>
             <input class="form-control form-control-lg" id="degreeInput" type="text" value="45"></input>
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <label>Let it rip</label>
             <button class="btn btn-block btn-success" id="rotateButton">Rotate</button>
           </div>
@@ -155,8 +153,9 @@
         depth: 400
       };
       var box = new Box( ".box-container", boxOpts );
-
       box.turn( 45 );
+
+      $( ".box" ).css( "transition", "all .5s ease-in-out" );
 
       document.getElementById( "rotateButton" ).addEventListener( "click", function( evt ) {
         var axis = document.getElementById( "axisInput" ).value;

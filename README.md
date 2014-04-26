@@ -28,4 +28,5 @@ var box = new Box(".box-container", {
 
 Notes
 -----
-Requires jQuery, for now.
+Requires jQuery. Easily getting and setting CSS properties (including vendor prefixed ones) is something jQuery (and other libraries) have handled well so I don't plan to drop jQuery as a dependency in the foreseeable future.
+
