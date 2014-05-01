@@ -3,7 +3,7 @@ _Layout HTML as a cube w/ CSS plus programmatic control_
 
 Inspired by [Cube5](https://github.com/guille/Cube5)
 
-Provides a Box class that can be used to build 3d boxes from HTML elements. There are some basic methods implemented already, will add more and document them soon.
+Provides a Box class that can be used to build 3d boxes from HTML elements. There are some basic methods implemented already, will add more and document them soon. Will also add ability to customize selectors for each face. Currently, you gotta do it like so:
 
 ```HTML
 <div class="box-container">
@@ -18,6 +18,8 @@ Provides a Box class that can be used to build 3d boxes from HTML elements. Ther
 </div>
 ```
 
+Then, initialize your box
+
 ```javascript
 var box = new Box(".box-container", {        
   width: 600,
@@ -26,7 +28,5 @@ var box = new Box(".box-container", {
 });
 ```
 
-Notes
------
-Requires jQuery. Easily getting and setting CSS properties (including vendor prefixed ones) is something jQuery (and other libraries) have handled well so I don't plan to drop jQuery as a dependency in the foreseeable future.
+No longer requires jQuery! Yum, 100%-pure vanilla JS
 
