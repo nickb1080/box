@@ -19,6 +19,10 @@
         background: #eee;
       }
 
+      .box {
+        transition: all .5s ease-in-out;
+      }
+
       .box-container {
         margin: 4rem auto;
       }
@@ -50,8 +54,9 @@
     <div class="wrapper">
       <div class="container-fluid">
         <div class="row">
-          <h1>Box.coffee
-            <span class="subtitle"><em>A CoffeeScript class for 3d boxes.</em></small>
+          <h1>BOX
+            <span class="subtitle"><em>A CoffeeScript class for 3d boxes.</em></span>
+            <span class="subtitle">Now with no dependencies.</span>
           </h1>
         </div>
         <div class="row">
@@ -140,8 +145,7 @@
     </div>
 
 
-    <script src="demo-assets/jquery.js"></script>
-    <script src="box.js"></script>
+    <script src="vanilla-box.js"></script>
     <script>
 
       // declare this out here so you can play with it in the console.
@@ -158,11 +162,12 @@
         box = new Box( ".box-container", boxOpts );
         box.turn({ y: 45 });
 
-        $( ".box" ).css( "transition", "all .5s ease-in-out" );
+        var axisInput = document.getElementById( "axisInput" );
+        var degInput = document.getElementById( "degreeInput" );
 
         document.getElementById( "rotateButton" ).addEventListener( "click", function( evt ) {
-          var axis = document.getElementById( "axisInput" ).value;
-          var deg = document.getElementById( "degreeInput" ).value;
+          var axis = axisInput.value;
+          var deg = degInput.value;
           o = {};
           o[axis] = deg;
           box.turn( o );
