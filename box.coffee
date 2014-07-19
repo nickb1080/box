@@ -11,9 +11,7 @@ getPrefixedStyle = do ->
     ms = "ms" + capStyle
     o = "o" + capStyle 
 
-    if d.style[style]?
-      return style
-    else if d.style[webkit]?
+    if d.style[webkit]?
       return webkit
     else if d.style[moz]?
       return moz
@@ -43,7 +41,7 @@ querySelectorAll = ->
     selector = arguments[0]
   Array.prototype.slice.call el.querySelectorAll selector
 
-# 
+# Box class
 class Box
   constructor : ( container, opts ) ->
     { @width, @height, @depth } = opts
@@ -131,7 +129,6 @@ class Box
       console.log axis
       if axis in ["x", "y", "z"]
         @rotation[axis] += +deg
-
     @setBoxTransform()
 
 

@@ -17,9 +17,7 @@
       moz = "Moz" + capStyle;
       ms = "ms" + capStyle;
       o = "o" + capStyle;
-      if (d.style[style] != null) {
-        return style;
-      } else if (d.style[webkit] != null) {
+      if (d.style[webkit] != null) {
         return webkit;
       } else if (d.style[moz] != null) {
         return moz;
